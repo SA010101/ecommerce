@@ -7,6 +7,7 @@ function Products() {
 
   const navigate = useNavigate();
   const [data, setData] = useState([]);
+  console.log(data)
   const [searchQuery, setSearchQuery] = useState("");
   const [pricefilter, setPricefilter] = useState("all");
   
