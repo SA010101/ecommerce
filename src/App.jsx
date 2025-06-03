@@ -2,7 +2,7 @@ import './App.css'
 import Home from './components/Main/Home';
 import LogIn from './components/LogIn Page/LogIn';
 import Main from './components/Main/Main';
-import Products from './components/main/Products';
+import Products from './components/Main/Products';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Cart from './components/Main/Cart';
 import Register from './components/SignUp Page/Register';
@@ -21,6 +21,7 @@ import AllOrders from './../src/components/Admin/ALL_P_S_DelOrders/AllOrders'
 import PendingOrders from './components/Admin/ALL_P_S_DelOrders/PendingOrders';
 import Shipped from './../src/components/Admin/ALL_P_S_DelOrders/Shipped'
 import Delivered from './../src/components/Admin/ALL_P_S_DelOrders/Delivered'
+import AdminProfileUpdate from './components/Admin/AdminProfileUpdate';
 
 function App() {
 
@@ -43,6 +44,7 @@ function App() {
          // Nested Routing Within Adminmain
         <Route path="/AdminMain" element={<AdminMain />}>
           <Route index element={<AdminDashboard/>} />
+          <Route path="AdminProfileUpdate" element={<AdminProfileUpdate/>} />
           <Route path="products" element={<AllProducts/>} />
 
         // Nested Routing eiyhin Nested Routing

@@ -4,6 +4,10 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 
 function AdminMain() {
 
+  const storedValue = localStorage.getItem('user');
+const storedUser = storedValue && storedValue !== "undefined" ? JSON.parse(storedValue) : null;
+console.log(storedUser)
+
   const navigate=useNavigate();
   return (
     <div className='flex w-full '>
@@ -12,7 +16,16 @@ function AdminMain() {
         
         <div className='w-full sticky top-0 flex flex-col px-2 py-2 shadow-lg bg-white'>
 
-        <h1 className='px-2 py-2 rounded-sm'>E-Shop</h1>
+        <div className='flex flex-col justify-center items-center gap-3 py-3'>
+            <img className='w-14 h-14 rounded-[100%] bg-green-50' src="" alt="img" />
+            <h1>{storedUser.admin.adminName}</h1>
+            <h1>{storedUser.admin.email}</h1>
+
+            <NavLink to="AdminProfileUpdate">
+                <button className=' bg-blue-600 px-2 py-1 rounded-sm text-white font font-semibold'>Edit Profile</button>
+            </NavLink>
+        </div>
+
         <h1 className='px-2 py-2'>MAIN MENU</h1>
         <ul className='flex flex-col gap-2'>
   <NavLink to="" end>
