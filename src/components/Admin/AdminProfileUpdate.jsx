@@ -13,10 +13,10 @@ function AdminProfileUpdate() {
 
         const BASE_URL="http://localhost:8080/api"
 
-        const [adminName, setadminName] = useState(user?.user?.adminName || "");
+        const [adminName, setadminName] = useState(user?.admin?.adminName || "");
         const [profileImg, setprofileImg] = useState(user?.user?.profileImg || "");
-        const [email, setEmail] = useState(user?.user?.email || "");
-        const [phone, setphone] = useState(user?.user?.phone || "");
+        const [email, setEmail] = useState(user?.admin?.email || "");
+        const [phone, setphone] = useState(user?.admin?.phone || "");
         const [currPassword,setcurrPassword]=useState("")
         const [newPassword,setnewPassword]=useState("")
 
@@ -86,9 +86,9 @@ function AdminProfileUpdate() {
 
         </div>
           
-          <input value={adminName} onChange={(e)=>{setadminName(e.target.value)}} type="text" className='outline-0 border border-black rounded-sm px-3 py-1 bg-white' placeholder='User Name'/>
-          <input value={email} onChange={(e)=>{setEmail(e.target.value)}} type="email" className='outline-0 border border-black rounded-sm px-3 py-1 bg-white' placeholder='Email'/>
-          <input value={phone} onChange={(e)=>{setphone(e.target.value)}} type="number" className='outline-0 border border-black rounded-sm px-3 py-1 bg-white' placeholder='Phone'/>
+          <input autoComplete='on' value={adminName} onChange={(e)=>{setadminName(e.target.value)}} type="text" className='outline-0 border border-black rounded-sm px-3 py-1 bg-white' placeholder='User Name'/>
+          <input autoComplete='on' value={email} onChange={(e)=>{setEmail(e.target.value)}} type="email" className='outline-0 border border-black rounded-sm px-3 py-1 bg-white' placeholder='Email'/>
+          <input autoComplete='on' value={phone} onChange={(e)=>{setphone(e.target.value)}} type="number" className='outline-0 border border-black rounded-sm px-3 py-1 bg-white' placeholder='Phone'/>
 
       </div>
 
