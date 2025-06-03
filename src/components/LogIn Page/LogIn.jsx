@@ -38,7 +38,6 @@ const LogIn = () => {
        localStorage.setItem('user', JSON.stringify(data));
        localStorage.setItem('token', data.token)
        localStorage.setItem("userId", data.admin._id)
-       console.log(data)
        navigate('/Product')
       }
       else{

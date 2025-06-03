@@ -6,6 +6,8 @@ function AdminMain() {
 
   const storedValue = localStorage.getItem('user');
 const storedUser = storedValue && storedValue !== "undefined" ? JSON.parse(storedValue) : null;
+  const profileImg=storedUser.admin.profileImg
+  console.log(profileImg)
 console.log(storedUser)
 
   const navigate=useNavigate();
@@ -17,7 +19,7 @@ console.log(storedUser)
         <div className='w-full sticky top-0 flex flex-col px-2 py-2 shadow-lg bg-white'>
 
         <div className='flex flex-col justify-center items-center gap-3 py-3'>
-            <img className='w-14 h-14 rounded-[100%] bg-green-50' src="" alt="img" />
+            <img className='w-14 h-14 rounded-[100%] bg-green-50' src={profileImg} alt="img" />
             <h1>{storedUser.admin.adminName}</h1>
             <h1>{storedUser.admin.email}</h1>
 
