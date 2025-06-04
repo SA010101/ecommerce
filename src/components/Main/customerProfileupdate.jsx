@@ -30,6 +30,8 @@ function CustomerProfileupdate() {
     formData.append("currPassword",currPassword);
     formData.append("newPassword",newPassword);
 
+    console.log("checking img attribute",img)
+
     try {
       const response = await fetch(`${BASE_URL}/profile`, {
         method: "PUT",
