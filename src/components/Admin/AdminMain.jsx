@@ -5,10 +5,10 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 function AdminMain() {
 
   const storedValue = localStorage.getItem('user');
-const storedUser = storedValue && storedValue !== "undefined" ? JSON.parse(storedValue) : null;
+  const storedUser = storedValue && storedValue !== "undefined" ? JSON.parse(storedValue) : null;
   const profileImg=storedUser.admin.profileImg
   console.log(profileImg)
-console.log(storedUser)
+  console.log(storedUser)
 
   const navigate=useNavigate();
   return (
