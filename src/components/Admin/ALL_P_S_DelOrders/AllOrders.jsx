@@ -4,6 +4,8 @@ import { useEffect } from 'react';
 function AllOrders() {
 
   const [showform,setShowform]=useState(false)
+  const [orderstatus,setOrderstatus]=useState("Out of Stock")
+  console.log(orderstatus)
   const [allorders,setAllorders]=useState([])
   const token=localStorage.getItem('token')
   console.log("token is :"+token)
@@ -38,6 +40,40 @@ function AllOrders() {
         
       }
       
+    const statusData={
+      status:orderstatus,
+    }
+
+      async function UpdateStatus(orderId) {
+
+        console.log("Order Id received is: "+ orderId)
+     
+          try {
+            const response = await fetch(`${BASE_URL}/updateOrderStatus/${orderId}`,{
+              method:"PUT",
+              headers:{
+                      Authorization: `Bearer ${token}`,
+              },
+              body: JSON.stringify(statusData)
+            });
+            
+            const responsedata = await response.json();
+      
+            if (response.ok) {
+              alert("Status Updated")
+              getOrderData()  // fetch Orders again
+            }
+            else{
+                console.log("Not Updated")
+                
+            }
+
+          } catch (error) {
+            console.error('Error:', error);
+          }
+        
+      }
+
     
     useEffect(()=>{
           getOrderData();
@@ -105,13 +141,13 @@ function AllOrders() {
              <div className='flex justify-between'>
                 <h1>Delivery Charges: ${order.deliveryCharges}</h1>
                 <div className='flex gap-1'>
-                  <select name="" id="">
+                  <select name="" id="" onChange={(e)=> setOrderstatus(e.target.value)}>
                     <option value="">Out Of Stock</option>
-                    <option value="">Cancel</option>
-                    <option value="">Confirmed</option>
+                    <option value="Cancel">Cancel</option>
+                    <option value="Confirmed">Confirmed</option>
                   </select>
 
-                  <button className='bg-blue-500 px-2 py-1 roundesm'>Update Status</button>
+                  <button className='bg-blue-500 px-2 py-1 roundesm cursor-pointer' onClick={()=>{UpdateStatus(order._id)}}>Update Status</button>
                 </div>
               </div>
               </div>
