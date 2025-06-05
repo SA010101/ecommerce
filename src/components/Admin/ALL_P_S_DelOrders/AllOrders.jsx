@@ -53,6 +53,7 @@ function AllOrders() {
               method:"PUT",
               headers:{
                       Authorization: `Bearer ${token}`,
+                      'Content-Type': 'application/json'   // Add this line!
               },
               body: JSON.stringify(statusData)
             });
@@ -61,6 +62,7 @@ function AllOrders() {
       
             if (response.ok) {
               alert("Status Updated")
+              console.log(responsedata)
               getOrderData()  // fetch Orders again
             }
             else{
@@ -142,7 +144,7 @@ function AllOrders() {
                 <h1>Delivery Charges: ${order.deliveryCharges}</h1>
                 <div className='flex gap-1'>
                   <select name="" id="" onChange={(e)=> setOrderstatus(e.target.value)}>
-                    <option value="">Out Of Stock</option>
+                    <option value="Out Of Stock">Out Of Stock</option>
                     <option value="Cancel">Cancel</option>
                     <option value="Confirmed">Confirmed</option>
                   </select>
