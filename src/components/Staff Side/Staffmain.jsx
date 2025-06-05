@@ -16,9 +16,9 @@ function Staffmain() {
       
       <div className='flex flex-col gap-8 w-[25%] bg-[#F5F5F5]'>
         
-        <div className='w-full sticky top-0 flex flex-col px-2 py-2 shadow-lg bg-white'>
+        <div className='w-full sticky top-0 flex flex-col px-2 py-2 shadow-lg'>
 
-        <div className='flex flex-col justify-center items-center gap-3 py-3'>
+        <div className='flex flex-col rounded-tl-2xl rounded-br-2xl bg-blue-500 text-white justify-center items-center gap-3 py-3'>
             <img className='w-14 h-14 rounded-[100%] bg-green-50' src="" alt="img" />
             <h1>{storedUser.staff.staffName}</h1>
             <h1>{storedUser.staff.email}</h1>
@@ -59,7 +59,7 @@ function Staffmain() {
 
             <div className='flex gap-3 py-7 justify-center'>
               <NavLink to="/">
-                   <button className='rounded-sm px-2 py-1 text-white bg-orange-500 cursor-pointer font-semibold'>Go To Website</button>
+                   <button className='rounded-sm px-2 py-1 text-white bg-blue-500 cursor-pointer font-semibold'>Go To Website</button>
               </NavLink>
 
               <button className='rounded-sm px-2 py-1 text-white bg-red-500 cursor-pointer font-semibold' onClick={()=>{localStorage.removeItem('user'), navigate('/')}}>Log out</button>
