@@ -23,6 +23,9 @@ import Shipped from './../src/components/Admin/ALL_P_S_DelOrders/Shipped'
 import Delivered from './../src/components/Admin/ALL_P_S_DelOrders/Delivered'
 import AdminProfileUpdate from './components/Admin/AdminProfileUpdate';
 import Staffmain from './components/Staff Side/Staffmain';
+import ConfirmOrders from './components/Staff Side/ConfirmOrders';
+import DispatchOrders from './components/Staff Side/DispatchOrders';
+import DeliverOrders from './components/Staff Side/DeliverOrders';
 
 function App() {
 
@@ -62,14 +65,10 @@ function App() {
         </Route>
 
           // Staff Side Nested Routing
-         <Route path="/Staff" element={<Staffmain/>}>
-          {/* <Route index element={<Home/>} />
-          <Route path="/product" element={<Products/>} />
-          <Route path="/MyOrder" element={<MyOrder/>} />
-          <Route path="/Cart" element={<Cart/>} />
-          <Route path="/CustomerUpdate" element={<CustomerProfileupdate/>} />
-          <Route path='/InfoInvoice' element={<InfoInvoice/>}/>
-          <Route path='/Notfound' element={<Notfound/>}/> */}
+         <Route path="/Staff-Home" element={<Staffmain/>}>
+          <Route index element={<ConfirmOrders/>} />
+          <Route path="DispatchOrders" element={<DispatchOrders/>} />
+          <Route path="DeliverOrders" element={<DeliverOrders/>} />
         </Route>
 
         

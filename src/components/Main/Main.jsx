@@ -134,7 +134,7 @@ const Navigate=useNavigate();
     <>
       <div>{user.staff.staffName}</div>
       <NavLink
-        to="Staff"
+        to="Staff-Home"
         className={({ isActive }) =>
           isActive
             ? "font-semibold text-blue-700"
