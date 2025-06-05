@@ -3,7 +3,7 @@ import React from 'react'
 function DispatchOrders() {
   return (
     <div>
-      Dispatch
+      Dispatch Orders
     </div>
   )
 }

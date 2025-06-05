@@ -3,7 +3,7 @@ import React from 'react'
 function DeliverOrders() {
   return (
     <div>
-        Deliver
+        Deliver Orders
     </div>
   )
 }
