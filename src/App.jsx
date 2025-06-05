@@ -22,6 +22,7 @@ import PendingOrders from './components/Admin/ALL_P_S_DelOrders/PendingOrders';
 import Shipped from './../src/components/Admin/ALL_P_S_DelOrders/Shipped'
 import Delivered from './../src/components/Admin/ALL_P_S_DelOrders/Delivered'
 import AdminProfileUpdate from './components/Admin/AdminProfileUpdate';
+import Staffmain from './components/Staff Side/Staffmain';
 
 function App() {
 
@@ -30,7 +31,7 @@ function App() {
 
         <Routes>
 
-
+          // Customer Side Nested Routing
         <Route path="/" element={<Main />}>
           <Route index element={<Home/>} />
           <Route path="/product" element={<Products/>} />
@@ -41,13 +42,13 @@ function App() {
           <Route path='/Notfound' element={<Notfound/>}/>
         </Route>
 
-         // Nested Routing Within Adminmain
+         //Admin Side Nested Routing
         <Route path="/AdminMain" element={<AdminMain />}>
           <Route index element={<AdminDashboard/>} />
           <Route path="AdminProfileUpdate" element={<AdminProfileUpdate/>} />
           <Route path="products" element={<AllProducts/>} />
 
-        // Nested Routing eiyhin Nested Routing
+          // Nested Routing Within Admin Nested Routing
           <Route path="Orders" element={<Orders/>}>        
           <Route index element={<AllOrders/>} />
           <Route path="PendingOrders" element={<PendingOrders/>} />
@@ -60,6 +61,16 @@ function App() {
           <Route path='Settings' element={<Settings/>}/>
         </Route>
 
+          // Staff Side Nested Routing
+         <Route path="/Staff" element={<Staffmain/>}>
+          {/* <Route index element={<Home/>} />
+          <Route path="/product" element={<Products/>} />
+          <Route path="/MyOrder" element={<MyOrder/>} />
+          <Route path="/Cart" element={<Cart/>} />
+          <Route path="/CustomerUpdate" element={<CustomerProfileupdate/>} />
+          <Route path='/InfoInvoice' element={<InfoInvoice/>}/>
+          <Route path='/Notfound' element={<Notfound/>}/> */}
+        </Route>
 
         
         <Route path='/Login' element={<LogIn/>}/>
