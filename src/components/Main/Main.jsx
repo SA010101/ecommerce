@@ -129,6 +129,29 @@ const Navigate=useNavigate();
         }}
       />
     </>
+  ):  user && user.staff ? (
+    // Admin view
+    <>
+      <div>{user.staff.staffName}</div>
+      <NavLink
+        to="/AdminMain"
+        className={({ isActive }) =>
+          isActive
+            ? "font-semibold text-blue-700"
+            : "text-black hover:text-blue-700 transition duration-200"
+        }
+      >
+        <div>Dashboard</div>
+      </NavLink>
+      <MdLogout
+        size={24}
+        className="cursor-pointer"
+        onClick={() => {
+          localStorage.removeItem('user');
+          window.location.reload();
+        }}
+      />
+    </>
   ) : (
     // Guest view
     <div className='flex gap-2 justify-center items-center'>
