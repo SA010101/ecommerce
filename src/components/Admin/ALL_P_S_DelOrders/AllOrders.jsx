@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 
 function AllOrders() {
 
-  const [showform,setShowform]=useState(null)
+  const [showform,setShowform]=useState(false)
   const [allorders,setAllorders]=useState([])
   const token=localStorage.getItem('token')
   console.log("token is :"+token)
@@ -73,7 +73,7 @@ function AllOrders() {
                 </div>
                 <h1>{order.status}</h1>
                 <h1>{order.createdAt}</h1>
-                <h1>view Details</h1>
+                <button className='cursor-pointer' onClick={()=>{setShowform(prev=> (!prev))}}>view Details</button>
                 
              </div> 
             <hr className='border border-[#F5F5F5]'/>
