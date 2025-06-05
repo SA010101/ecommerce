@@ -36,6 +36,7 @@ function AllOrders() {
           }
         
       }
+      
     
     useEffect(()=>{
           getOrderData();
@@ -75,6 +76,23 @@ function AllOrders() {
                 
              </div> 
             <hr className='border border-[#F5F5F5]'/>
+            <div className='flex flex-col py-2 gap-2 bg-yellow-50'>
+              <h1>Order Items</h1>
+              <div>Items+ Image</div>
+              <div className='flex justify-between'>
+                <h1>Deleivery Charges</h1>
+                <div className='flex gap-1'>
+                  <select name="" id="">
+                    <option value="">Out Of Stock</option>
+                    <option value="">Cancel</option>
+                    <option value="">Confirmed</option>
+                  </select>
+
+                  <button className='bg-blue-500 px-2 py-1 rounded-sm'>Update Status</button>
+                </div>
+              </div>
+
+            </div>
             
                 </div>
                   )
