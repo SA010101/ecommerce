@@ -1,16 +1,21 @@
 import React from 'react'
 import { useEffect,useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
+import { MdPhone } from 'react-icons/md';
+import { MdLocalShipping } from 'react-icons/md'; // Material Design
+import { FaMapMarkerAlt } from 'react-icons/fa';
+import { FaRegClock } from 'react-icons/fa';
+
 
 function ConfirmOrders() {
 
     const [allorders,setAllorders]=useState([])
     const BASE_URL="http://localhost:8080/api"
     const token=localStorage.getItem('token')
-  
+    
+      
+
     async function getOrderData() {
-
-
 
           try {
             const response = await fetch(`${BASE_URL}/orders`,{
@@ -23,9 +28,9 @@ function ConfirmOrders() {
             const responsedata = await response.json();
       
             if (response.ok) {
-              console.log("Order Data fetched")
-              setAllorders(responsedata.orders);  // Store the fetched data in state
-               localStorage.setItem('ordersData',responsedata.orders)
+              const confirmedOrders = responsedata.orders.filter(order => order.status === 'Confirmed');
+               setAllorders(confirmedOrders); // Only confirmed orders
+               localStorage.setItem('ordersData', JSON.stringify(data));
             }
             else{
                 console.log("No Order")
@@ -42,7 +47,7 @@ function ConfirmOrders() {
                 getOrderData();
           },[])
 
-          console.log("All orders are: " + allorders)
+          
 
   return (
     <div className='w-full flex flex-col gap-10 py-10 px-10 bg-[#F5F5F5]'>
@@ -67,21 +72,25 @@ function ConfirmOrders() {
 
       <div>
 
-          <div className='bg-green-100 w-[600px] h-[400px] rounded-lg'>
-                <div className='flex flex-col gap-4 px-4 py-4 h-[150px] bg-blue-600 rounded-tl-lg rounded-tr-lg'>
+        {
+          allorders.map((order,index)=>{
+
+           return  <div className='flex gap-10 flex-col bg-green-100 w-[600px] rounded-lg'>
+             
+            <div className='flex flex-col gap-4 px-4 py-4 h-[150px] bg-blue-600 rounded-tl-lg rounded-tr-lg'>
                   <div className='flex justify-between'>
                     <div className='flex flex-col'>
-                      <h1>Order Name</h1>
+                      <h1>{order.name}</h1>
                       <h1>Ready to Dispatch</h1>
                     </div>
                     <div className='flex flex-col items-center'>
-                      <h1>RS</h1>
+                      <h1>${order.totalAmount}</h1>
                       <h1>Total Amount</h1>
                     </div>
                   </div>
                   <div>
-                        <h1>Order ID: </h1>
-                        <h1>Confirmed Date</h1>
+                        <h1>Order ID:{order._id}</h1>
+                        <h1>Confirmed: {order.createdAt}</h1>
                   </div>
                   
                 </div>
@@ -90,18 +99,19 @@ function ConfirmOrders() {
                       <div className='flex justify-between gap-2'>
 
                         <div className='flex gap-2 items-center'>
-                          <h1>phone icon</h1>
+                          <MdPhone size={20} color="gray" />
+                          
                           <div className='flex flex-col'>
                             <h1>Phone</h1>
-                            <h1>Phone number</h1>
+                            <h1>{order.phone}</h1>
                           </div>
                         </div>
 
                          <div className='flex gap-2 items-center'>
-                          <h1>Delivery icon</h1>
+                          <MdLocalShipping size={22} color="gray" />
                           <div className='flex flex-col'>
                             <h1>Delivery Charges</h1>
-                            <h1>RS:</h1>
+                            <h1>${order.deliveryCharges}</h1>
                           </div>
                         </div>
 
@@ -110,24 +120,24 @@ function ConfirmOrders() {
                        <div className='flex justify-between gap-2'>
 
                         <div className='flex gap-2 items-center'>
-                          <h1>phone icon</h1>
+                          <FaMapMarkerAlt size={22} color="red" />
                           <div className='flex flex-col'>
-                            <h1>Phone</h1>
-                            <h1>Phone number</h1>
+                            <h1>Delivery Address</h1>
+                            <h1>{order.address}</h1>
                           </div>
                         </div>
 
                          <div className='flex gap-2 items-center'>
-                          <h1>Delivery icon</h1>
+                          <FaRegClock size={20} color="gray" />
                           <div className='flex flex-col'>
-                            <h1>Delivery Charges</h1>
-                            <h1>RS:</h1>
+                            <h1>Ordered At</h1>
+                            <h1>{order.createdAt}</h1>
                           </div>
                         </div>
 
                       </div>
 
-                      <button className='flex items-start bg-blue-500'>Confirmed</button>
+                      <button className='flex items-start bg-blue-500'>{order.status}</button>
 
                 </div>
 
@@ -137,18 +147,28 @@ function ConfirmOrders() {
 
                   {/* <div className='flex h-[300px]'> */}
                               
-                      <div className='flex py-2 px-3 items-center gap-3'>
-                        <img src="dfsd" alt="img" />
+                    {
+                      order.items.map((item)=>{
+                        return  <div className='flex py-2 px-3 items-center gap-3'>
+                        <img className='w8 h-8' src={item.img} alt="img" />
                         <div className='flex flex-col'>
-                          <h1>Product name</h1>
-                          <h1>Product Description</h1>
+                          <h1>{item.productName}</h1>
+                          <h1>{item.quantity}</h1>
                         </div>
                       </div>
+                      })
+                    }          
+                     
 
                   {/* </div> */}
 
                 </div>
           </div>
+
+          })
+           
+        }
+          
 
       </div>
 
