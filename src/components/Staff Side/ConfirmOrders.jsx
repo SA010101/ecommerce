@@ -1,7 +1,49 @@
 import React from 'react'
+import { useEffect,useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 
 function ConfirmOrders() {
+
+    const [allorders,setAllorders]=useState([])
+    const BASE_URL="http://localhost:8080/api"
+    const token=localStorage.getItem('token')
+  
+    async function getOrderData() {
+
+
+
+          try {
+            const response = await fetch(`${BASE_URL}/orders`,{
+              method:"GET",
+              headers:{
+                      Authorization: `Bearer ${token}`,
+              }
+            });
+            
+            const responsedata = await response.json();
+      
+            if (response.ok) {
+              console.log("Order Data fetched")
+              setAllorders(responsedata.orders);  // Store the fetched data in state
+               localStorage.setItem('ordersData',responsedata.orders)
+            }
+            else{
+                console.log("No Order")
+                setAllorders([])
+            }
+
+          } catch (error) {
+            console.error('Error:', error);
+          }
+        
+      }
+
+      useEffect(()=>{
+                getOrderData();
+          },[])
+
+          console.log("All orders are: " + allorders)
+
   return (
     <div className='w-full flex flex-col gap-10 py-10 px-10 bg-[#F5F5F5]'>
 
