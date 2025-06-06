@@ -86,7 +86,6 @@ function MyOrder() {
       
     
   return (
-
     
     <div className='flex flex-col gap-6 py-5 items-center  bg-[#F5F5F5]'>
 

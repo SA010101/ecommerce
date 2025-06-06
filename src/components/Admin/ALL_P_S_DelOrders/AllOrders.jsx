@@ -41,7 +41,7 @@ function AllOrders() {
       }
       
     const statusData={
-      status:orderstatus,
+       newStatus:orderstatus,
     }
 
       async function UpdateStatus(orderId) {
@@ -49,6 +49,7 @@ function AllOrders() {
         console.log("Order Id received is: "+ orderId)
      
           try {
+
             const response = await fetch(`${BASE_URL}/updateOrderStatus/${orderId}`,{
               method:"PUT",
               headers:{
