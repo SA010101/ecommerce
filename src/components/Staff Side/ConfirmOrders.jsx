@@ -25,7 +25,7 @@ function ConfirmOrders() {
 
       <div>
 
-          <div className='bg-green-100 w-auto h-[400px] rounded-lg'>
+          <div className='bg-green-100 w-[600px] h-[400px] rounded-lg'>
                 <div className='flex flex-col gap-4 px-4 py-4 h-[150px] bg-blue-600 rounded-tl-lg rounded-tr-lg'>
                   <div className='flex justify-between'>
                     <div className='flex flex-col'>
@@ -43,7 +43,7 @@ function ConfirmOrders() {
                   </div>
                   
                 </div>
-                <div className='bg-yellow-50 flex flex-col gap-8 w-auto h-[200px]'>
+                <div className='bg-yellow-50 flex px-4 py-4 flex-col gap-8 w-auto h-[200px]'>
 
                       <div className='flex justify-between gap-2'>
 
@@ -89,13 +89,21 @@ function ConfirmOrders() {
 
                 </div>
 
-                <div className='w-full bg-fuchsia-100'>
+                <div className='w-full px-4 py-4 bg-fuchsia-100'>
 
                   <h1>Items Delivered</h1>
 
-                  <div>
-                    
-                  </div>
+                  {/* <div className='flex h-[300px]'> */}
+                              
+                      <div className='flex py-2 px-3 items-center gap-3'>
+                        <img src="dfsd" alt="img" />
+                        <div className='flex flex-col'>
+                          <h1>Product name</h1>
+                          <h1>Product Description</h1>
+                        </div>
+                      </div>
+
+                  {/* </div> */}
 
                 </div>
           </div>
