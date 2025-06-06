@@ -125,6 +125,7 @@ const LogIn = () => {
           required
         />
         <input
+        autoComplete='on'
           type="password"
           placeholder="Password"
           // value={password}
