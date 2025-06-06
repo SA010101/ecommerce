@@ -30,7 +30,7 @@ function ConfirmOrders() {
             if (response.ok) {
               const confirmedOrders = responsedata.orders.filter(order => order.status === 'Confirmed');
                setAllorders(confirmedOrders); // Only confirmed orders
-               localStorage.setItem('ordersData', JSON.stringify(data));
+               localStorage.setItem('ordersData', JSON.stringify(responsedata.orders));
             }
             else{
                 console.log("No Order")

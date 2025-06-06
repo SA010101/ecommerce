@@ -3,7 +3,10 @@ import { FaSearch } from 'react-icons/fa';
 
 function DispatchOrders() {
 
-    
+    const DispatchOrders = JSON.parse(localStorage.getItem('ordersData') || '[]');
+  console.log(DispatchOrders)
+    const dispatchedOrders = DispatchOrders.filter((order) => order.status === "Dispatched");
+    console.log(dispatchedOrders)
 
   return (
     <div className='w-full flex flex-col gap-10 py-10 px-10 bg-[#F5F5F5]'>
