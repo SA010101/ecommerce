@@ -30,14 +30,13 @@ function Staffmain() {
 
         <h1 className='px-2 py-2'>MAIN MENU</h1>
         <ul className='flex flex-col gap-2'>
-  <NavLink to="" end>
-  {({ isActive }) => (
-    <li className={`px-2 py-2 rounded-md ${isActive ? 'bg-blue-600 text-white' : 'hover:bg-blue-100'}`}>
-      Confirm Orders
-    </li>
-  )}
-</NavLink>
-
+          <NavLink to="" end>
+          {({ isActive }) => (
+            <li className={`px-2 py-2 rounded-md ${isActive ? 'bg-blue-600 text-white' : 'hover:bg-blue-100'}`}>
+              Confirm Orders
+            </li>
+          )}
+        </NavLink>
 
   <NavLink to="DispatchOrders">
     {({ isActive }) => (
