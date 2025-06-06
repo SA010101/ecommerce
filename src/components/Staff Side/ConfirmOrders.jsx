@@ -68,7 +68,7 @@ function ConfirmOrders() {
             if (response.ok) {
               alert("Status Updated")
               console.log(responsedata)
-              // getOrderData()  // fetch Orders again
+              getOrderData()  // fetch Orders again
             }
             else{
                 console.log("Not Updated")
