@@ -7,13 +7,15 @@ import { FaMapMarkerAlt } from 'react-icons/fa';
 import { FaRegClock } from 'react-icons/fa';
 
 
+
 function ConfirmOrders() {
 
+    const [orderstatus,setOrderstatus]=useState("Dispatched")
     const [allorders,setAllorders]=useState([])
     const BASE_URL="http://localhost:8080/api"
     const token=localStorage.getItem('token')
     
-      
+      console.log(orderstatus)
 
     async function getOrderData() {
 
@@ -35,6 +37,42 @@ function ConfirmOrders() {
             else{
                 console.log("No Order")
                 setAllorders([])
+            }
+
+          } catch (error) {
+            console.error('Error:', error);
+          }
+        
+      }
+
+      const statusData={
+        newStatus:orderstatus,
+      }
+       async function UpdateStatus(orderId) {
+
+        console.log("Order Id received is: "+ orderId)
+     
+          try {
+
+            const response = await fetch(`${BASE_URL}/updateOrderStatus/${orderId}`,{
+              method:"PUT",
+              headers:{
+                      Authorization: `Bearer ${token}`,
+                      'Content-Type': 'application/json'   // Add this line!
+              },
+              body: JSON.stringify(statusData)
+            });
+            
+            const responsedata = await response.json();
+      
+            if (response.ok) {
+              alert("Status Updated")
+              console.log(responsedata)
+              // getOrderData()  // fetch Orders again
+            }
+            else{
+                console.log("Not Updated")
+                
             }
 
           } catch (error) {
@@ -155,6 +193,7 @@ function ConfirmOrders() {
                           <h1>{item.productName}</h1>
                           <h1>{item.quantity}</h1>
                         </div>
+                        
                       </div>
                       })
                     }          
@@ -163,6 +202,10 @@ function ConfirmOrders() {
                   {/* </div> */}
 
                 </div>
+                       <select name="" id="" className='w-36'  onChange={(e)=>{setOrderstatus(e.target.value)}}>
+                          <option value="Dispatched">Dispatched</option>
+                        </select>
+                    <button onClick={()=>{UpdateStatus(order._id)}}>Update Status</button>
           </div>
 
           })
