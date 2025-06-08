@@ -20,8 +20,7 @@ function Users() {
                 const responsedata = await response.json();
                 if (response.ok) {
                   console.log("User Data get successfully!!")
-                  console.log(responsedata)
-                    setUserdata(responsedata.users);
+                  setUserdata(responsedata.users);
                 }
                 else{
                   alert("Api Error")
@@ -99,7 +98,7 @@ function Users() {
                 </div>
 
                 {
-                  userdata.map((user,index)=>{
+                  userdata.length>0 ? userdata.map((user,index)=>{
                       return(
                       <div key={index} >
                      <div className='flex justify-between items-center  px-5 py-4'>
@@ -113,7 +112,9 @@ function Users() {
                     </div>
                       )
 
-                  })
+                  }):(
+                    <div className='flex justify-center text-2xl font-semibold py-3'>No User Registered Yet</div>
+                  )
                    
                 }
 

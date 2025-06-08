@@ -79,7 +79,7 @@ function Shipped() {
             
                 </div>
                   ):(
-                    <div className='flex justify-center'>No Orders Dispatched Yet</div>
+                    <div className='flex justify-center text-2xl font-semibold py-3'>No Orders Dispatched Yet</div>
                   )
                   
                 } 

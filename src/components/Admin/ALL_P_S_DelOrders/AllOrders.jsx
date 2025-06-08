@@ -155,11 +155,10 @@ function AllOrders() {
            }
 
             
-             
             </div>
                  
                   ):(
-                    <div className='flex justify-center'>No Orders</div>
+                    <div className='flex justify-center text-2xl font-semibold py-3'>No Orders</div>
                   )
                   
                 } 
