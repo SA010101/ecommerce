@@ -194,7 +194,7 @@
 // export default LogIn;
 
 import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 const LogIn = () => {
@@ -294,15 +294,15 @@ const LogIn = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
-      <div className="w-[300px] p-8 border border-gray-300 rounded-xl bg-white shadow-md">
-        <h2 className="text-center text-3xl font-bold text-blue-700 mb-6">Login</h2>
-        <form onSubmit={handleLogin} className="flex flex-col gap-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-tr from-indigo-100 via-purple-100 to-pink-100 px-4">
+      <div className="w-[320px] p-8 bg-white rounded-3xl shadow-lg border border-purple-300">
+        <h2 className="text-center text-3xl font-extrabold text-purple-700 mb-6 tracking-wide">Welcome Back</h2>
+        <form onSubmit={handleLogin} className="flex flex-col gap-5">
           <input
             type="email"
             placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
-            className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="px-4 py-3 border border-purple-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 transition"
             required
           />
           <input
@@ -310,30 +310,29 @@ const LogIn = () => {
             type="password"
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
-            className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="px-4 py-3 border border-purple-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 transition"
             required
           />
-          <div className='flex items-center gap-2'>
-            <select
-              className="w-full h-10 border border-black rounded-sm px-2 focus:outline-none"
-              onChange={(e) => { setRole(e.target.value) }}
-            >
-              <option value="Customer">Customer</option>
-              <option value="Admin">Admin</option>
-              <option value="Staff">Staff</option>
-            </select>
-          </div>
+          <select
+            className="w-full h-11 border border-purple-400 rounded-lg px-3 focus:outline-none focus:ring-2 focus:ring-purple-400 transition"
+            onChange={(e) => { setRole(e.target.value) }}
+            defaultValue="Customer"
+          >
+            <option value="Customer">Customer</option>
+            <option value="Admin">Admin</option>
+            <option value="Staff">Staff</option>
+          </select>
           <button
             type="submit"
-            className="bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
+            className="bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-lg font-semibold shadow-md transition duration-300"
           >
             Login
           </button>
         </form>
 
-        <p className="mt-4 text-center text-sm">
+        <p className="mt-6 text-center text-sm text-gray-700">
           Don't have an account?{' '}
-          <Link to="/Register" className="text-blue-600 font-semibold hover:underline">
+          <Link to="/Register" className="text-purple-600 font-semibold hover:underline">
             Register / Sign Up
           </Link>
         </p>
@@ -343,3 +342,4 @@ const LogIn = () => {
 };
 
 export default LogIn;
+
