@@ -14,7 +14,7 @@ function ConfirmOrders() {
     const BASE_URL="http://localhost:8080/api"
     const token=localStorage.getItem('token')
     
-      console.log(orderstatus)
+      // console.log(orderstatus)
 
     async function getOrderData() {
 
@@ -29,9 +29,12 @@ function ConfirmOrders() {
             const responsedata = await response.json();
       
             if (response.ok) {
-              const confirmedOrders = responsedata.orders.filter(order => order.status === 'Delivered');
-               setAllorders(confirmedOrders); // Only confirmed orders
-               localStorage.setItem('ordersData', JSON.stringify(responsedata.orders));
+
+              const DeliverOrders = responsedata.orders.filter(order => order.status === 'Delivered');
+              setAllorders(DeliverOrders); // Only confirmed orders
+              console.log(responsedata)
+
+              
             }
             else{
                 console.log("No Order")
@@ -44,41 +47,41 @@ function ConfirmOrders() {
         
       }
 
-      const statusData={
-        newStatus:orderstatus,
-      }
-       async function UpdateStatus(orderId) {
+      // const statusData={
+      //   newStatus:orderstatus,
+      // }
+      //  async function UpdateStatus(orderId) {
 
-        console.log("Order Id received is: "+ orderId)
+      //   console.log("Order Id received is: "+ orderId)
      
-          try {
+      //     try {
 
-            const response = await fetch(`${BASE_URL}/updateOrderStatus/${orderId}`,{
-              method:"PUT",
-              headers:{
-                      Authorization: `Bearer ${token}`,
-                      'Content-Type': 'application/json'   // Add this line!
-              },
-              body: JSON.stringify(statusData)
-            });
+      //       const response = await fetch(`${BASE_URL}/updateOrderStatus/${orderId}`,{
+      //         method:"PUT",
+      //         headers:{
+      //                 Authorization: `Bearer ${token}`,
+      //                 'Content-Type': 'application/json'   // Add this line!
+      //         },
+      //         body: JSON.stringify(statusData)
+      //       });
             
-            const responsedata = await response.json();
+      //       const responsedata = await response.json();
       
-            if (response.ok) {
-              alert("Status Updated")
-              console.log(responsedata)
-              // getOrderData()  // fetch Orders again
-            }
-            else{
-                console.log("Not Updated")
+      //       if (response.ok) {
+      //         alert("Status Updated")
+      //         console.log(responsedata)
+      //         // getOrderData()  // fetch Orders again
+      //       }
+      //       else{
+      //           console.log("Not Updated")
                 
-            }
+      //       }
 
-          } catch (error) {
-            console.error('Error:', error);
-          }
+      //     } catch (error) {
+      //       console.error('Error:', error);
+      //     }
         
-      }
+      // }
 
       useEffect(()=>{
                 getOrderData();
@@ -201,10 +204,7 @@ function ConfirmOrders() {
                   {/* </div> */}
 
                 </div>
-                       <select name="" id="" className='w-36'  onChange={(e)=>{setOrderstatus(e.target.value)}}>
-                          <option value="Dispatched">Dispatched</option>
-                        </select>
-                    <button onClick={()=>{UpdateStatus(order._id)}}>Update Status</button>
+                      
           </div>
 
           })

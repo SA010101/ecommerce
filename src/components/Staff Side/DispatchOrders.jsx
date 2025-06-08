@@ -31,7 +31,7 @@ function DispatchOrders() {
       
             if (response.ok) {
                const DispatchedOrders = responsedata.orders.filter(order => order.status === 'Dispatched');
-               setAllorders(DispatchedOrders); // Only confirmed orders
+               setAllorders(DispatchedOrders);    // Only Dispatched orders
             }
             else{
                 console.log("No Order")
