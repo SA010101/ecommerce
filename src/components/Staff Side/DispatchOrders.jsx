@@ -30,8 +30,8 @@ function DispatchOrders() {
             const responsedata = await response.json();
       
             if (response.ok) {
-              alert("data fetched")
-              setAllorders(responsedata.orders)
+               const DispatchedOrders = responsedata.orders.filter(order => order.status === 'Dispatched');
+               setAllorders(DispatchedOrders); // Only confirmed orders
             }
             else{
                 console.log("No Order")

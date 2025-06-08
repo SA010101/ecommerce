@@ -7,7 +7,6 @@ import { FaMapMarkerAlt } from 'react-icons/fa';
 import { FaRegClock } from 'react-icons/fa';
 
 
-
 function ConfirmOrders() {
 
     const [orderstatus,setOrderstatus]=useState("Dispatched")
@@ -32,7 +31,6 @@ function ConfirmOrders() {
             if (response.ok) {
               const confirmedOrders = responsedata.orders.filter(order => order.status === 'Confirmed');
                setAllorders(confirmedOrders); // Only confirmed orders
-               localStorage.setItem('ordersData', JSON.stringify(responsedata.orders));
             }
             else{
                 console.log("No Order")
@@ -48,7 +46,8 @@ function ConfirmOrders() {
       const statusData={
         newStatus:orderstatus,
       }
-       async function UpdateStatus(orderId) {
+
+     async function UpdateStatus(orderId) {
 
         console.log("Order Id received is: "+ orderId)
      
