@@ -94,7 +94,7 @@ function ConfirmOrders() {
           <h1 className='text-2xl font-semibold'>Orders Ready to Dispatch</h1>
           <h1>Manage confirmed orders and update dispatch status</h1>
         </div>
-        <button className='bg-blue-50 px-3 rounded-lg font-semibold text-blue-600'>1 order Confirmed</button>
+        <button className='bg-blue-50 px-3 rounded-lg font-semibold text-blue-600'>{allorders.length} order Confirmed</button>
       </div>
       <div className='flex w-full gap-10 bg-white py-6 px-5 rounded-lg'>
         <div className='w-full flex items-center gap-2 outline-0 border border-black rounded-sm px-3 py-2'>
@@ -110,9 +110,9 @@ function ConfirmOrders() {
       <div>
 
         {
-          allorders.map((order,index)=>{
+          allorders.length>0 ? allorders.map((order,index)=>{
 
-           return  <div className='flex gap-10 flex-col bg-green-100 w-[600px] rounded-lg'>
+           return  <div key={index} className='flex gap-10 flex-col bg-green-100 w-[600px] rounded-lg'>
              
             <div className='flex flex-col gap-4 px-4 py-4 h-[150px] bg-blue-600 rounded-tl-lg rounded-tr-lg'>
                   <div className='flex justify-between'>
@@ -207,7 +207,10 @@ function ConfirmOrders() {
                     <button onClick={()=>{UpdateStatus(order._id)}}>Update Status</button>
           </div>
 
-          })
+          }):
+          (
+            <div className='flex justify-center'>No Orders Confirmed Yet</div>
+          )
            
         }
           
