@@ -47,42 +47,7 @@ function ConfirmOrders() {
         
       }
 
-      // const statusData={
-      //   newStatus:orderstatus,
-      // }
-      //  async function UpdateStatus(orderId) {
-
-      //   console.log("Order Id received is: "+ orderId)
-     
-      //     try {
-
-      //       const response = await fetch(`${BASE_URL}/updateOrderStatus/${orderId}`,{
-      //         method:"PUT",
-      //         headers:{
-      //                 Authorization: `Bearer ${token}`,
-      //                 'Content-Type': 'application/json'   // Add this line!
-      //         },
-      //         body: JSON.stringify(statusData)
-      //       });
-            
-      //       const responsedata = await response.json();
-      
-      //       if (response.ok) {
-      //         alert("Status Updated")
-      //         console.log(responsedata)
-      //         // getOrderData()  // fetch Orders again
-      //       }
-      //       else{
-      //           console.log("Not Updated")
-                
-      //       }
-
-      //     } catch (error) {
-      //       console.error('Error:', error);
-      //     }
-        
-      // }
-
+    
       useEffect(()=>{
                 getOrderData();
           },[])
