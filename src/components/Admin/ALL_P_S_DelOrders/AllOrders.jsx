@@ -5,11 +5,10 @@ function AllOrders() {
 
   const [showform,setShowform]=useState(false)
   const [orderstatus,setOrderstatus]=useState("Out of Stock")
-  
+  console.log("Status is: "+orderstatus)
   const [allorders,setAllorders]=useState([])
   const token=localStorage.getItem('token')
-  console.log("token is :"+token)
-
+ 
   const BASE_URL="http://localhost:8080/api"
 
    async function getOrderData() {
