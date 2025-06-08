@@ -4,8 +4,8 @@ import { useEffect } from 'react';
 function Shipped() {
 
   const [allorders,setAllorders]=useState([])
-   const token=localStorage.getItem('token')
-  console.log(allorders.orders)
+  const token=localStorage.getItem('token')
+
 
   const Shipped = allorders.filter((order) => order.status === "Dispatched");
 
@@ -57,7 +57,7 @@ function Shipped() {
                 <hr className='border border-[#F5F5F5]'/>
 
                 {
-                  Shipped.map((order,index)=>
+                  Shipped.length>0? Shipped.map((order,index)=>
                     <div key={index}>
             <div className='flex justify-between'>
 
@@ -78,6 +78,8 @@ function Shipped() {
             <hr className='border border-[#F5F5F5]'/>
             
                 </div>
+                  ):(
+                    <div className='flex justify-center'>No Orders Dispatched Yet</div>
                   )
                   
                 } 

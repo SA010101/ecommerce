@@ -58,7 +58,7 @@ function Delivered() {
                 <hr className='border border-[#F5F5F5]'/>
 
                 {
-                  DeliveredOrders.map((order,index)=>
+                  DeliveredOrders.length>0 ? DeliveredOrders.map((order,index)=>
                     <div key={index}>
             <div className='flex justify-between'>
 
@@ -79,6 +79,8 @@ function Delivered() {
             <hr className='border border-[#F5F5F5]'/>
             
                 </div>
+                  ):(
+                    <div className='flex justify-center'>No Orders Delivered Yet</div>
                   )
                   
                 } 

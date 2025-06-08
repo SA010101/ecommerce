@@ -4,8 +4,7 @@ import { useEffect } from 'react';
 function PendingOrders() {
 
   const [allorders,setAllorders]=useState([])
-   const token=localStorage.getItem('token')
-  console.log(allorders.orders)
+  const token=localStorage.getItem('token')
 
   const PendingOrders = allorders.filter((order) => order.status === "Pending");
 
@@ -59,7 +58,7 @@ function PendingOrders() {
                 <hr className='border border-[#F5F5F5]'/>
 
                 {
-                  PendingOrders.map((order,index)=>
+                  PendingOrders.length>0? PendingOrders.map((order,index)=>
                     <div key={index}>
             <div className='flex justify-between'>
 
@@ -80,6 +79,8 @@ function PendingOrders() {
             <hr className='border border-[#F5F5F5]'/>
             
                 </div>
+                  ):(
+                    <div className='flex justify-center'>No Orders in Pending</div>
                   )
                   
                 } 

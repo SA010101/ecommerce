@@ -5,7 +5,6 @@ function AllOrders() {
 
   const [showform,setShowform]=useState(false)
   const [orderstatus,setOrderstatus]=useState("Out of Stock")
-  console.log("Status is: "+orderstatus)
   const [allorders,setAllorders]=useState([])
   const token=localStorage.getItem('token')
  
@@ -95,7 +94,7 @@ function AllOrders() {
                 <hr className='border border-[#F5F5F5]'/>
 
                 {
-                  allorders.map((order,index)=>
+                  allorders.length>0? allorders.map((order,index)=>
           <div key={index}>
             <div className='flex justify-between'>
 
@@ -159,6 +158,8 @@ function AllOrders() {
              
             </div>
                  
+                  ):(
+                    <div className='flex justify-center'>No Orders</div>
                   )
                   
                 } 
