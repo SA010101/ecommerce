@@ -5,12 +5,10 @@ import { FiCamera } from "react-icons/fi";
 
 function CustomerProfileupdate() {
 
+        const BASE_URL="http://localhost:8080/api"
         let storedUser = localStorage.getItem('user');
         const user = storedUser && storedUser !== "undefined" ? JSON.parse(storedUser) : null;
         const token=localStorage.getItem('token')
-        console.log(token)
-
-        const BASE_URL="http://localhost:8080/api"
 
         const [fullName, setfullName] = useState(user?.user?.username || "");
         const [img, setImg] = useState(null);
@@ -37,7 +35,7 @@ function CustomerProfileupdate() {
         method: "PUT",
         headers: {
     Authorization: `Bearer ${token}`,
-  },
+      },
         body: formData,
       });
 
@@ -46,13 +44,7 @@ function CustomerProfileupdate() {
       
       if(response.ok){
         alert("Profile Updated successfully")
-         // Reset form and hide
-      // setImg(null);
-      // setfullName("");
-      // setEmail("");
-      // setAddress("");
-      // setcurrPassword("");
-      // setnewPassword()
+        
       }
       else{
         alert(data.error)
@@ -104,8 +96,8 @@ function CustomerProfileupdate() {
       <div className='flex flex-col justify-center gap-3 py-4'>
 
           <h1 className='font-semibold'>Change Password</h1>
-          <input value={currPassword} onChange={(e)=>{setcurrPassword(e.target.value)}} type="password" className='outline-0 border border-black rounded-sm px-3 py-1 bg-white' placeholder='Current Password'/>
-          <input value={newPassword} type="password" onChange={(e)=>{setnewPassword(e.target.value)}} className='outline-0 border border-black rounded-sm px-3 py-1 bg-white' placeholder='New Password'/>
+          <input autoComplete='on' value={currPassword} onChange={(e)=>{setcurrPassword(e.target.value)}} type="password" className='outline-0 border border-black rounded-sm px-3 py-1 bg-white' placeholder='Current Password'/>
+          <input autoComplete='on' value={newPassword} type="password" onChange={(e)=>{setnewPassword(e.target.value)}} className='outline-0 border border-black rounded-sm px-3 py-1 bg-white' placeholder='New Password'/>
           <button  className='bg-blue-600 text-white font-semibold px-3 py-1 rounded-sm' type='submit'>Update Profile</button>
       </div>
       </form>
