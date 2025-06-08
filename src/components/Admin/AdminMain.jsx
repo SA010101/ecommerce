@@ -127,7 +127,7 @@ function AdminMain() {
                 src={profileImg} 
                 alt="img" 
               />
-              <h1 className='text-xl font-semibold text-gray-800'>{storedUser.admin.adminName}</h1>
+              <h1 className='text-xl font-semibold text-gray-800'>{storedUser.admin.adminName.toUpperCase()}</h1>
               <p className='text-sm text-gray-500 truncate max-w-[200px]'>{storedUser.admin.email}</p>
 
               <NavLink to="AdminProfileUpdate">
