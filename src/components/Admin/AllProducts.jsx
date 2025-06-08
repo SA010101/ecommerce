@@ -6,8 +6,7 @@ function AllProducts() {
     const BASE_URL="http://localhost:8080/api"
     const [data,setData]=useState([])
     const token=localStorage.getItem('token')
-    console.log(token)
-    console.log(data)
+
       async function getProducts() {
           try {
             const response = await fetch(`${BASE_URL}/products`,{
@@ -36,16 +35,16 @@ function AllProducts() {
           getProducts();
         }, []);
 
-        const deleteUser=async (product)=>{
+        const deleteProduct=async (product)=>{
 
               try {
                 const response = await fetch(`${BASE_URL}/deleteProduct/${product._id}`,{
                   method: 'DELETE',
                   headers: {
+
                             'Content-Type': 'application/json',
                             Authorization: `Bearer ${token}`,
-                                // Add any auth token if required
-                                 // 'Authorization': 'Bearer your_token_here'
+                    
                       }
                      });
               
@@ -97,7 +96,6 @@ function AllProducts() {
       });
 
       const data = await response.json();
-      console.log(data);
       
       if(response.ok){
         alert("Product Added successfully")
@@ -238,7 +236,7 @@ function AllProducts() {
           <td className="px-4 py-2 text-center">
             <FaTrash
               className="text-red-600 hover:text-red-800 cursor-pointer"
-              onClick={() => deleteUser(product)}
+              onClick={() => deleteProduct(product)}
               size={16}
             />
           </td>
