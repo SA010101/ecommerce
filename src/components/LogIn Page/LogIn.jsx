@@ -1,194 +1,345 @@
+// import React, { useState } from 'react';
+// import { Link, NavLink } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
+
+
+
+// const LogIn = () => {
+//   const [useremail,setEmail]=useState("");
+//   const [userpassword,setPassword]=useState("");
+//   const [role,setRole]=useState("Customer")
+//   const navigate = useNavigate();
+
+//   async function UserLogin() {
+
+//     const userData = {
+//       email:useremail,
+//       password:userpassword
+//     };
+  
+
+//     if(role==="Admin")
+//     {
+//       try {
+//       const response = await fetch("http://localhost:8080/api/adminLogin", {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(userData)
+//       });
+  
+//       const data = await response.json();
+
+//       if (response.ok) {
+//        alert("✅ Admin Login Successfully!!!");
+//        localStorage.setItem('user', JSON.stringify(data));
+//        localStorage.setItem('token', data.token)
+//        localStorage.setItem("userId", data.admin._id)
+//        navigate('/Product')
+//       }
+//       else{
+//         alert(data.message)
+//       }
+//     } catch (error) {
+//       console.error('Registration failed:', error.message);
+//     }
+//     }
+    
+//     else if(role==="Customer"){
+//       try {
+//       const response = await fetch("http://localhost:8080/api/login", {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(userData)
+//       });
+  
+//       const data = await response.json();
+
+//       if (response.ok) {
+//        alert("✅ Customer Login Successfully!!!");
+//        localStorage.setItem('user', JSON.stringify(data));
+//        localStorage.setItem('token', data.token)
+//        localStorage.setItem("userId", data.user._id)
+//        navigate('/Product')
+//       }
+//       else{
+//         alert(data.message)
+//       }
+//     } catch (error) {
+//       console.error('Registration failed:', error.message);
+//     }
+//     }
+
+//     else{
+
+//       try {
+//       const response = await fetch("http://localhost:8080/api/staffLogin", {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify(userData)
+//       });
+  
+//       const data = await response.json();
+
+//       if (response.ok) {
+//        alert("✅ Staff Login Successfully!!!");
+//        localStorage.setItem('user', JSON.stringify(data));
+//        localStorage.setItem('token', data.token)
+//        localStorage.setItem("userId", data.staff._id)
+//        navigate('/Product')
+//       }
+//       else{
+//         alert(data.message)
+//       }
+//     } catch (error) {
+//       console.error('Registration failed:', error.message);
+//     }
+//     }
+    
+//   }
+  
+//   function handleLogin(e) {
+//     e.preventDefault();
+//     UserLogin();
+//   }
+
+//   return (
+//     <div style={styles.container}>
+//       <h2>Login</h2>
+//       <form onSubmit={handleLogin} style={styles.form}>
+//         <input
+//           type="email"
+//           placeholder="Email"
+//           // value={email}
+//           onChange={(e) => setEmail(e.target.value)}
+//           style={styles.input}
+//           required
+//         />
+//         <input
+//         autoComplete='on'
+//           type="password"
+//           placeholder="Password"
+//           // value={password}
+//           onChange={(e) => setPassword(e.target.value)}
+//           style={styles.input}
+//           required
+//         />
+//         <div className='flex items-center gap-2'>
+//           <select className="w-full h-5 outline-0 border border-black rounded-sm" onChange={(e)=>{setRole(e.target.value)}} name="" id="">
+//           <option value="Customer">Customer</option>
+//           <option value="Admin">Admin</option>
+//           <option value="Staff">Staff</option>
+//         </select>
+//         </div>
+        
+//         <button type="submit" style={styles.button}>Login</button>
+//       </form>
+
+//       <p style={styles.signupText}>
+//         Don't have an account?{' '}
+//         <Link to="/Register" style={styles.signupLink}>Register / Sign Up</Link>
+//       </p>
+//     </div>
+//   );
+// };
+
+// const styles = {
+//   container: {
+//     width: '300px',
+//     margin: '100px auto',
+//     padding: '2rem',
+//     border: '1px solid #ccc',
+//     borderRadius: '10px',
+//     textAlign: 'center'
+//   },
+//   form: {
+//     display: 'flex',
+//     flexDirection: 'column',
+//     gap: '1rem'
+//   },
+//   input: {
+//     padding: '10px',
+//     fontSize: '1rem',
+//     borderRadius: '5px',
+//     border: '1px solid #ddd'
+//   },
+//   button: {
+//     padding: '10px',
+//     fontSize: '1rem',
+//     backgroundColor: '#007bff',
+//     color: '#fff',
+//     border: 'none',
+//     borderRadius: '5px'
+//   },
+//   error: {
+//     color: 'red',
+//     marginBottom: '1rem'
+//   },
+//   signupText: {
+//     marginTop: '1rem',
+//     fontSize: '0.9rem'
+//   },
+//   signupLink: {
+//     color: '#007bff',
+//     textDecoration: 'none',
+//     fontWeight: 'bold'
+//   }
+// };
+
+// export default LogIn;
+
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
-
-
 const LogIn = () => {
-  const [useremail,setEmail]=useState("");
-  const [userpassword,setPassword]=useState("");
-  const [role,setRole]=useState("Customer")
+  const [useremail, setEmail] = useState("");
+  const [userpassword, setPassword] = useState("");
+  const [role, setRole] = useState("Customer");
   const navigate = useNavigate();
 
   async function UserLogin() {
-
     const userData = {
-      email:useremail,
-      password:userpassword
+      email: useremail,
+      password: userpassword
     };
-  
 
-    if(role==="Admin")
-    {
+    if (role === "Admin") {
       try {
-      const response = await fetch("http://localhost:8080/api/adminLogin", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(userData)
-      });
-  
-      const data = await response.json();
+        const response = await fetch("http://localhost:8080/api/adminLogin", {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(userData)
+        });
 
-      if (response.ok) {
-       alert("✅ Admin Login Successfully!!!");
-       localStorage.setItem('user', JSON.stringify(data));
-       localStorage.setItem('token', data.token)
-       localStorage.setItem("userId", data.admin._id)
-       navigate('/Product')
+        const data = await response.json();
+
+        if (response.ok) {
+          alert("✅ Admin Login Successfully!!!");
+          localStorage.setItem('user', JSON.stringify(data));
+          localStorage.setItem('token', data.token);
+          localStorage.setItem("userId", data.admin._id);
+          navigate('/Product');
+        } else {
+          alert(data.message);
+        }
+      } catch (error) {
+        console.error('Registration failed:', error.message);
       }
-      else{
-        alert(data.message)
-      }
-    } catch (error) {
-      console.error('Registration failed:', error.message);
     }
-    }
-    
-    else if(role==="Customer"){
+
+    else if (role === "Customer") {
       try {
-      const response = await fetch("http://localhost:8080/api/login", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(userData)
-      });
-  
-      const data = await response.json();
+        const response = await fetch("http://localhost:8080/api/login", {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(userData)
+        });
 
-      if (response.ok) {
-       alert("✅ Customer Login Successfully!!!");
-       localStorage.setItem('user', JSON.stringify(data));
-       localStorage.setItem('token', data.token)
-       localStorage.setItem("userId", data.user._id)
-       navigate('/Product')
+        const data = await response.json();
+
+        if (response.ok) {
+          alert("✅ Customer Login Successfully!!!");
+          localStorage.setItem('user', JSON.stringify(data));
+          localStorage.setItem('token', data.token);
+          localStorage.setItem("userId", data.user._id);
+          navigate('/Product');
+        } else {
+          alert(data.message);
+        }
+      } catch (error) {
+        console.error('Registration failed:', error.message);
       }
-      else{
-        alert(data.message)
-      }
-    } catch (error) {
-      console.error('Registration failed:', error.message);
-    }
     }
 
-    else{
-
+    else {
       try {
-      const response = await fetch("http://localhost:8080/api/staffLogin", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData)
-      });
-  
-      const data = await response.json();
+        const response = await fetch("http://localhost:8080/api/staffLogin", {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(userData)
+        });
 
-      if (response.ok) {
-       alert("✅ Staff Login Successfully!!!");
-       localStorage.setItem('user', JSON.stringify(data));
-       localStorage.setItem('token', data.token)
-       localStorage.setItem("userId", data.staff._id)
-       navigate('/Product')
+        const data = await response.json();
+
+        if (response.ok) {
+          alert("✅ Staff Login Successfully!!!");
+          localStorage.setItem('user', JSON.stringify(data));
+          localStorage.setItem('token', data.token);
+          localStorage.setItem("userId", data.staff._id);
+          navigate('/Product');
+        } else {
+          alert(data.message);
+        }
+      } catch (error) {
+        console.error('Registration failed:', error.message);
       }
-      else{
-        alert(data.message)
-      }
-    } catch (error) {
-      console.error('Registration failed:', error.message);
     }
-    }
-    
   }
-  
+
   function handleLogin(e) {
     e.preventDefault();
     UserLogin();
   }
 
   return (
-    <div style={styles.container}>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin} style={styles.form}>
-        <input
-          type="email"
-          placeholder="Email"
-          // value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          style={styles.input}
-          required
-        />
-        <input
-        autoComplete='on'
-          type="password"
-          placeholder="Password"
-          // value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          style={styles.input}
-          required
-        />
-        <div className='flex items-center gap-2'>
-          <select className="w-full h-5 outline-0 border border-black rounded-sm" onChange={(e)=>{setRole(e.target.value)}} name="" id="">
-          <option value="Customer">Customer</option>
-          <option value="Admin">Admin</option>
-          <option value="Staff">Staff</option>
-        </select>
-        </div>
-        
-        <button type="submit" style={styles.button}>Login</button>
-      </form>
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+      <div className="w-[300px] p-8 border border-gray-300 rounded-xl bg-white shadow-md">
+        <h2 className="text-center text-3xl font-bold text-blue-700 mb-6">Login</h2>
+        <form onSubmit={handleLogin} className="flex flex-col gap-4">
+          <input
+            type="email"
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+            className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            required
+          />
+          <input
+            autoComplete="on"
+            type="password"
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+            className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            required
+          />
+          <div className='flex items-center gap-2'>
+            <select
+              className="w-full h-10 border border-black rounded-sm px-2 focus:outline-none"
+              onChange={(e) => { setRole(e.target.value) }}
+            >
+              <option value="Customer">Customer</option>
+              <option value="Admin">Admin</option>
+              <option value="Staff">Staff</option>
+            </select>
+          </div>
+          <button
+            type="submit"
+            className="bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
+          >
+            Login
+          </button>
+        </form>
 
-      <p style={styles.signupText}>
-        Don't have an account?{' '}
-        <Link to="/Register" style={styles.signupLink}>Register / Sign Up</Link>
-      </p>
+        <p className="mt-4 text-center text-sm">
+          Don't have an account?{' '}
+          <Link to="/Register" className="text-blue-600 font-semibold hover:underline">
+            Register / Sign Up
+          </Link>
+        </p>
+      </div>
     </div>
   );
-};
-
-const styles = {
-  container: {
-    width: '300px',
-    margin: '100px auto',
-    padding: '2rem',
-    border: '1px solid #ccc',
-    borderRadius: '10px',
-    textAlign: 'center'
-  },
-  form: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '1rem'
-  },
-  input: {
-    padding: '10px',
-    fontSize: '1rem',
-    borderRadius: '5px',
-    border: '1px solid #ddd'
-  },
-  button: {
-    padding: '10px',
-    fontSize: '1rem',
-    backgroundColor: '#007bff',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '5px'
-  },
-  error: {
-    color: 'red',
-    marginBottom: '1rem'
-  },
-  signupText: {
-    marginTop: '1rem',
-    fontSize: '0.9rem'
-  },
-  signupLink: {
-    color: '#007bff',
-    textDecoration: 'none',
-    fontWeight: 'bold'
-  }
 };
 
 export default LogIn;
