@@ -19,7 +19,6 @@ const location = useLocation();
 // console.log(user.user.username)
 
 const token=localStorage.getItem('token')
-console.log(token)
 
 const Navigate=useNavigate();
 

@@ -7,9 +7,7 @@ import { useNavigate } from 'react-router-dom';
 const LogIn = () => {
   const [useremail,setEmail]=useState("");
   const [userpassword,setPassword]=useState("");
-  // const [ischeck,setIscheck]=useState(false)
   const [role,setRole]=useState("Customer")
-  // console.log(ischeck)
   const navigate = useNavigate();
 
   async function UserLogin() {
@@ -65,7 +63,6 @@ const LogIn = () => {
        localStorage.setItem('user', JSON.stringify(data));
        localStorage.setItem('token', data.token)
        localStorage.setItem("userId", data.user._id)
-       console.log(data)
        navigate('/Product')
       }
       else{
@@ -94,7 +91,6 @@ const LogIn = () => {
        localStorage.setItem('user', JSON.stringify(data));
        localStorage.setItem('token', data.token)
        localStorage.setItem("userId", data.staff._id)
-       console.log(data)
        navigate('/Product')
       }
       else{

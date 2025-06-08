@@ -7,18 +7,13 @@ function Products() {
 
   const navigate = useNavigate();
   const [data, setData] = useState([]);
-  console.log(data)
+
   const [searchQuery, setSearchQuery] = useState("");
   const [pricefilter, setPricefilter] = useState("all");
   
   const storedValue = localStorage.getItem('user');
 const storedUser = storedValue && storedValue !== "undefined" ? JSON.parse(storedValue) : null;
   const token=localStorage.getItem('token')
-// console.log(storedUser.user.id)
-
-  console.log(data)
-
-console.log(storedUser)
 
 
   async function getData() {

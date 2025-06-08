@@ -4,16 +4,13 @@ function MyOrder() {
 
     const BASE_URL="http://localhost:8080/api"
 
-    // const storedUser = JSON.parse(localStorage.getItem('user'));
     let storedUser = localStorage.getItem('user');
     const user = storedUser && storedUser !== "undefined" ? JSON.parse(storedUser) : null;
     
     let userId = localStorage.getItem('userId');
-    console.log(userId)
     const token=localStorage.getItem('token')
-
     const [orderdata,setOrderdata]=useState([])
-    console.log(orderdata)
+ 
 
     async function getOrderData() {
      
@@ -27,10 +24,10 @@ function MyOrder() {
             });
             
             const responsedata = await response.json();
-            setOrderdata(responsedata);  // Store the fetched data in state
       
             if (response.ok) {
-              console.log("Order Data fetched"+ responsedata)
+
+              setOrderdata(responsedata);  // Store the fetched data in state
 
             }
             else{
@@ -51,7 +48,7 @@ function MyOrder() {
     async function cancelorder(order) {
 
       console.log(order)
-      if(order.status=="Pending")
+      if(order.status=="Pending" || order.status=="Cancel" || order.status=="Out Of Stock")
       
     {
           try {

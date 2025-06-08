@@ -10,12 +10,11 @@ function Cart() {
     const navigate=useNavigate()
 
     const [cartdata,setCartdata]=useState([]);
-    // const storedUser = JSON.parse(localStorage.getItem('user'));
 
     let storedUser = localStorage.getItem('user');
-const user = storedUser && storedUser !== "undefined" ? JSON.parse(storedUser) : null;
+    const user = storedUser && storedUser !== "undefined" ? JSON.parse(storedUser) : null;
     const token=localStorage.getItem('token')
-    console.log(token)
+
     const [delcharges,setDelcharges]=useState("3")
     const [itemsprice,setItemsprice]=useState([]);
       
