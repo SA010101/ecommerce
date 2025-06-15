@@ -12,37 +12,37 @@
 //     const [orderdata,setOrderdata]=useState([])
  
 
-//     async function getOrderData() {
+    // async function getOrderData() {
      
-//           try {
-//             const response = await fetch(`${BASE_URL}/userOrders/${userId}`,{
-//               method:"GET",
-//               headers:{
-//                     'Authorization': `Bearer ${token}`
-//               }
+    //       try {
+    //         const response = await fetch(`${BASE_URL}/userOrders/${userId}`,{
+    //           method:"GET",
+    //           headers:{
+    //                 'Authorization': `Bearer ${token}`
+    //           }
 
-//             });
+    //         });
             
-//             const responsedata = await response.json();
+    //         const responsedata = await response.json();
       
-//             if (response.ok) {
+    //         if (response.ok) {
 
-//               setOrderdata(responsedata);  // Store the fetched data in state
+    //           setOrderdata(responsedata);  // Store the fetched data in state
 
-//             }
-//             else{
-//                 console.log("No Order")
-//             }
+    //         }
+    //         else{
+    //             console.log("No Order")
+    //         }
 
-//           } catch (error) {
-//             console.error('Error:', error);
-//           }
+    //       } catch (error) {
+    //         console.error('Error:', error);
+    //       }
         
-//       }
+    //   }
     
-//     useEffect(()=>{
-//           getOrderData();
-//     },[],orderdata)
+    // useEffect(()=>{
+    //       getOrderData();
+    // },[],orderdata)
 
 
 //     async function cancelorder(order) {

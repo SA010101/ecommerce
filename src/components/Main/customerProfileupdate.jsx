@@ -111,7 +111,6 @@
 // export default CustomerProfileupdate
 
 
-import React from 'react'
 import { useState } from 'react';
 import { FiCamera } from "react-icons/fi";
 
